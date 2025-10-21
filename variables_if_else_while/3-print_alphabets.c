@@ -10,11 +10,13 @@
 int main(void)
 {
 	char c = 'a';
+
 	while (c <= 'z')
 	{
 		putchar(c);
 		c++;
 	}
+
 	c = 'A';
 	while (c <= 'Z')
 	{
@@ -22,5 +24,6 @@ int main(void)
 		c++;
 	}
 	putchar('\n');
+	
 	return (0);
 }
