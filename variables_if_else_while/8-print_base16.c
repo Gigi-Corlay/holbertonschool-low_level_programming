@@ -18,10 +18,10 @@ int main(void)
 
 	nbr_hex = 97;
 	while (nbr_hex < 103)
-        {
-                putchar(nbr_hex);
-                nbr_hex++;
-        }
+	{
+		putchar(nbr_hex);
+		nbr_hex++;
+	}
 	putchar('\n');
 
 	return (0);
