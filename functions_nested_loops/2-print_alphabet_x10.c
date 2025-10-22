@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet_x10 - Prints the alphabet ten times 
+ * print_alphabet_x10 - Prints the alphabet ten times
  *
  * This function prints the lowercase letters from 'a' to 'z'
  * ten times, followed by a newline each time. It utilizes
@@ -18,6 +18,6 @@ void print_alphabet_x10(void)
 		{
 			_putchar(c);
 		}
-	_putchar('\n');
+		_putchar('\n');
 	}
 }
