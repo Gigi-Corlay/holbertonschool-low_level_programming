@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int a = 1;
+	int b = 2;
+	int next;
+	int count;
+
+	count = 2;
+	printf ("%d, %d ", a, b);
+	while (count < 50)
+	{
+		next = a + b;
+		a = b;
+		b = next;
+		count++;
+
+		if (count < 50)
+			printf("%d, ", next);
+		else
+			printf("%d\n", next);
+	}
+	return(0);
+}
