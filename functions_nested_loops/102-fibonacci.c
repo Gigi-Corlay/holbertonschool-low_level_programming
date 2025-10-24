@@ -10,13 +10,13 @@
  */
 int main(void)
 {
-	long long int a = 1;
-	long long int b = 2;
-	long long int next;
+	unsigned long a = 1;
+	unsigned long b = 2;
+	unsigned long next;
 	int count;
 
 	count = 2;
-	printf ("%lld, %lld ", a, b);
+	printf ("%lu, %lu ", a, b);
 	while (count < 50)
 	{
 		next = a + b;
@@ -25,9 +25,9 @@ int main(void)
 		count++;
 
 		if (count < 50)
-			printf("%lld, ", next);
+			printf("%lu, ", next);
 		else
-			printf("%lld\n", next);
+			printf("%lu\n", next);
 	}
 	return(0);
 }
