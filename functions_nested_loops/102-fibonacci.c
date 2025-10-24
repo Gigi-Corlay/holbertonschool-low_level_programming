@@ -29,5 +29,5 @@ int main(void)
 		else
 			printf("%lu\n", next);
 	}
-	return(0);
+	return (0);
 }
