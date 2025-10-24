@@ -16,7 +16,7 @@ int main(void)
 	int count;
 
 	count = 2;
-	printf ("%lu, %lu ", a, b);
+	printf ("%lu, %lu, ", a, b);
 	while (count < 50)
 	{
 		next = a + b;
