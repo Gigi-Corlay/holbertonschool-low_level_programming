@@ -13,7 +13,6 @@ int _strlen(char *s)
 
        	while (s[n] != '\0')
 	{
-		printf("%d", n);
 		n++;
 	}
 
