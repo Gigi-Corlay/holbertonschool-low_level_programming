@@ -16,7 +16,7 @@ int _atoi(char *s)
 {
 	int i = 0;
 	int sign = 1;
-	int number = 0;
+	long number = 0;
 	int started = 0;
 
 	while (s[i] != '\0')
@@ -36,5 +36,5 @@ int _atoi(char *s)
 		}
 		i++;
 	}
-	return (number * sign);
+	return ((int)(number * sign));
 }
