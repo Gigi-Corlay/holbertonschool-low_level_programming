@@ -1,6 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * is_separator - Checks if a character is a word separator
+ * @c: The character to check
+ *
+ * Return: 1 if the character is a separator, 0 otherwise
+ */
 int is_separator(char c)
 {
 	char sep[] = " \t\n,;.!?\"(){}";
