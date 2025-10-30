@@ -3,16 +3,16 @@
 
 int is_separator(char c)
 {
-    char sep[] = " \t\n,;.!?\"(){}";
-    int i = 0;
+	char sep[] = " \t\n,;.!?\"(){}";
+	int i = 0;
 
-    while (sep[i])
-    {
-        if (c == sep[i])
-            return 1;
-        i++;
-    }
-    return 0;
+	while (sep[i])
+	{
+		if (c == sep[i])
+		return 1;
+		i++;
+	}
+	return 0;
 }
 
 /**
