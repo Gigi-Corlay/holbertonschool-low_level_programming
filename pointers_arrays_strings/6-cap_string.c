@@ -9,7 +9,9 @@ int is_separator(char c)
 	while (sep[i])
 	{
 		if (c == sep[i])
-		return 1;
+		{
+			return (1);
+		}
 		i++;
 	}
 	return (0);
