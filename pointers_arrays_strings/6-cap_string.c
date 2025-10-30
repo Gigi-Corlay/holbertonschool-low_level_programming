@@ -12,7 +12,7 @@ int is_separator(char c)
 		return 1;
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
 /**
