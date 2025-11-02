@@ -2,6 +2,7 @@
 
 /**
 * main - Entry point
+*
 * Description: Adds one line to modify a[2] to 98 using the pointer p
 *              and prints the value to check correctness.
 * Return: Always 0.
