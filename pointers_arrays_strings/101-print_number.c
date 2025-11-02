@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
-* main - check the code
-*
-* Return: Always 0.
-*/
+ * print_number - prints an integer
+ * @n: the integer to print
+ *
+ * Return: void
+ */
 void print_number(int n)
 {
 	int digit;
@@ -12,9 +13,9 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
+
 		digit = -(n % 10);
-		n = n / 10 ;
-		n = -n;
+		n = -(n / 10);
 	}
 	else
 	{
@@ -25,5 +26,5 @@ void print_number(int n)
 	if (n != 0)
 		print_number(n);
 
-	_putchar('0' + digit);
+	_putchar(digit + '0');
 }
