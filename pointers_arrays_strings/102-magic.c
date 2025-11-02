@@ -16,7 +16,7 @@ int main(void)
 
 	a[2] = 1024;    /* valeur initiale */
 
-	/* Ligne à ajouter ici pour mettre 98 via p */
+	*p = 98; /* Ligne unique qui change la valeur pointée par p */
 
 	if (a[2] == 98)
 	{
