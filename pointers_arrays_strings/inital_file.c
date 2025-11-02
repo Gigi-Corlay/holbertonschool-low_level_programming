@@ -3,16 +3,14 @@
 /**
 * main - Entry point
 *
-* Description: Prepare the array and pointer for the exercise.
+* Description: Modify a[2] to 98 using the pointer p
 *
-* Return: Always 0.
+* Return: Always 0
 */
 int main(void)
 {
 	int n;
-
 	int a[5];
-
 	int *p;
 
 	a[2] = 1024;
@@ -26,6 +24,7 @@ int main(void)
 	* - only one statement
 	* - you are not allowed to code anything else than this line of code
 	*/
+	*p = 98;
 
 	if (a[2] == 98)
 	{
