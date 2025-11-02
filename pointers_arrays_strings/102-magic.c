@@ -11,17 +11,15 @@
 int main(void)
 {
 	int a[5];
+	int *p = &a[2];
 
-	int *p = &a[2]; /* p pointe déjà sur a[2] */
+	a[2] = 1024;
 
-	a[2] = 1024;    /* valeur initiale */
-
-	*p = 98; /* Ligne unique qui change la valeur pointée par p */
+	*p = 98;
 
 	if (a[2] == 98)
 	{
 		printf("a[2] = %d\n", a[2]);
 	}
-
 	return (0);
 }
