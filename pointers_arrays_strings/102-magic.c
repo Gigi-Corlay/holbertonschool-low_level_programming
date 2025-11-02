@@ -11,8 +11,12 @@
 int main(void)
 {
 	int a[5];
-	int *p = &a[2];
-	a[2] = 1024;
+
+	int *p = &a[2]; /* p pointe déjà sur a[2] */
+
+	a[2] = 1024;    /* valeur initiale */
+
+	/* Ligne à ajouter ici pour mettre 98 via p */
 
 	if (a[2] == 98)
 	{
