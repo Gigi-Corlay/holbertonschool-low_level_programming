@@ -8,6 +8,24 @@
  */
 int main(void)
 {
+    char *s = "hello";
+    char *f;
+
+    f = _strchr(s, 'l');
+
+    if (f != NULL)
+    {
+        printf("%s\n", f);
+    }
+    return (0);
+}
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+-------Projet 2------------
+int main(void)
+{
     char s1[98];
     char *ptr;
     int i;
@@ -40,7 +58,7 @@ int main(void)
     return (0);
 }
 
-/**
+--------------------- projet 3 -------------------
  * main - check the code
  *
  * Return: Always 0.
