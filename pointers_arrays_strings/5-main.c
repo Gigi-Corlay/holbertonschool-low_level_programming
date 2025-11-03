@@ -8,6 +8,21 @@
  */
 int main(void)
 {
+    char *s = "hello, world";
+    char *f = "world";
+    char *t;
+
+    t = _strstr(s, f);
+    printf("%s\n", t);
+    return (0);
+}
+/** ----------------- Projet 2 ---------------
+ * main - check the code
+ *
+ * Return: Always 0.
+ 
+int main(void)
+{
     char str[] = "Look up!\n";
     char *ptr;
 
@@ -16,9 +31,7 @@ int main(void)
     printf("%s", str);
     return (0);
 }
-
-
-/**
+---------------- Projet 1 ---------------------
  * main - check the code
  *
  * Return: Always 0.
