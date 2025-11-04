@@ -2,9 +2,10 @@
 #include <stdio.h>
 
 /**
- * main - check the code
+ * _strlen_recursion - returns the length of a string
+ * @s: pointer to the string
  *
- * Return: Always 0.
+ * Return: length of the string
  */
 int _strlen_recursion(char *s)
 {
