@@ -1,12 +1,8 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * print_chessboard - prints an 8x8 chessboard
- * @a: pointer to a 2D array representing the chessboard
- *
- * Description: This function prints the pieces stored in the
- * 8x8 array to display a chessboard layout.
+ * print_chessboard - prints the chessboard
+ * @a: 2D array of chars
  *
  * Return: void
  */
