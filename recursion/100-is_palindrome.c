@@ -1,8 +1,4 @@
 #include "main.h"
-#include <ctype.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * _strlen_recursion - Retourne la longueur d'une chaîne
