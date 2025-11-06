@@ -19,7 +19,6 @@ int _strlen_recursion(char *s)
 
 /**
  * helper_palindrome - Vérifie récursivement si une sous-chaîne est un palindrome
- * en ignorant les espaces et la casse
  * @s: chaîne à vérifier
  * @start: index de début
  * @end: index de fin
@@ -28,15 +27,10 @@ int _strlen_recursion(char *s)
  */
 int helper_palindrome(char *s, int start, int end)
 {
-	while (start < end && s[start] == ' ')
-		start++;
-	while (start < end && s[end] == ' ')
-		end--;
-
 	if (start >= end)
 		return (1);
 
-	if (tolower(s[start]) != tolower(s[end]))
+	if (s[start] != s[end])
 		return (0);
 
 	return (helper_palindrome(s, start + 1, end - 1));
@@ -52,11 +46,10 @@ int is_palindrome(char *s)
 {
 	int len;
 
-	if (s == NULL)
-		return (0);
 	if (*s == '\0')
 		return (1);
 
 	len = _strlen_recursion(s);
+
 	return (helper_palindrome(s, 0, len - 1));
 }
