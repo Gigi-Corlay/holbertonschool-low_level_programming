@@ -24,7 +24,7 @@
 		tmp = a + b;
 		a = b;
 		b = tmp;
-	}
+
 		printf("%lu\n", sum);
 	}
 	return (0);
