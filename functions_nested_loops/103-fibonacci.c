@@ -8,7 +8,7 @@
  *
  * Return: Always 0 (Success)
  */
- int main(void)
+int main(void)
 {
 	unsigned long a = 1;
 	unsigned long b = 2;
@@ -21,11 +21,12 @@
 		{
 			sum += b;
 		}
+
 		tmp = a + b;
 		a = b;
 		b = tmp;
-
-		printf("%lu\n", sum);
 	}
+	printf("%lu\n", sum);
+
 	return (0);
 }
