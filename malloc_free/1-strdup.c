@@ -16,7 +16,6 @@ char *_strdup(char *str)
 	char * dest;
 
 	int i;
-
 	int n = 0;
 
 	if (str == 0)
