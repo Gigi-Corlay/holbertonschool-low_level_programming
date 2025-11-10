@@ -10,22 +10,28 @@
  * Return: un pointeur vers le tableau, ou NULL si échec ou size == 0
  */
 
- char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
  {
-	char * array;
-	unsigned int i;
+	char * dest;
+	int i;
+	int n = 0;
 
-	if (size == 0)
+	if (str == 0)
 		return (NULL);
 
-	array = malloc(sizeof(*array) * size);
-
-	if (array == NULL)
-		return (NULL);
-
-	for (i = 0; i < size; i++)
+	while (str[n] != '\0')
 	{
-		array[i] = c;
+		 n++;
 	}
-	return (array);
+
+	dest = malloc(sizeof(*dest) * (n + 1));
+
+	if (dest == NULL)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		dest[i] = str [i];
+	}
+	return (dest);
  }
