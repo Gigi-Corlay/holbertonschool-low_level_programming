@@ -3,17 +3,20 @@
 #include <stdlib.h>
 
 /**
- * create_array - crée un tableau de chars et l'initialise avec un caractère donné
- * @size: la taille du tableau
- * @c: le caractère à utiliser pour initialiser le tableau
+ * _strdup - Duplicate a string by creating a new allocated memory.
+ * @str: The string to duplicate. If NULL, returns NULL.
  *
- * Return: un pointeur vers le tableau, ou NULL si échec ou size == 0
+ * Return: A pointer to the newly allocated string, or NULL if it fails
+ *         to allocate memory or if str is NULL.
  */
 
 char *_strdup(char *str)
- {
+
+{
 	char * dest;
+
 	int i;
+
 	int n = 0;
 
 	if (str == 0)
@@ -34,4 +37,4 @@ char *_strdup(char *str)
 		dest[i] = str [i];
 	}
 	return (dest);
- }
+}
