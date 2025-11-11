@@ -3,9 +3,18 @@
 #include <stdlib.h>
 
 /**
- * main - check the code
+ * string_nconcat - concatenates two strings
+ * @s1: first string
+ * @s2: second string
+ * @n: number of bytes from s2 to concatenate
  *
- * Return: Always 0.
+ * Description: Allocates memory and returns a new string,
+ * which contains s1 followed by the first n bytes of s2.
+ * If n is greater than the length of s2, use the entire s2.
+ * If s1 or s2 is NULL, treat it as an empty string.
+ *
+ * Return: Pointer to the newly allocated concatenated string,
+ * or NULL if memory allocation fails.
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
