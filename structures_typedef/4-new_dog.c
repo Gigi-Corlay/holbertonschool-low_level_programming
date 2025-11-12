@@ -4,47 +4,47 @@
 
 /**
  * new_dog - Creates a new dog
- * @name: Name of the dog
+ * @name: Name of the dog (can be NULL)
  * @age: Age of the dog
- * @owner: Owner of the dog
+ * @owner: Owner of the dog (can be NULL)
  *
  * Return: Pointer to the new dog, or NULL if memory allocation fails
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-    dog_t *dog;
-    char *name_copy;
-    char *owner_copy;
+	dog_t *dog;
+	char *name_copy;
+	char *owner_copy;
 
-    if (name == NULL || owner == NULL)
-        return (NULL);
+	if (name == NULL)
+		name = "";
+	if (owner == NULL)
+		owner = "";
 
-    dog = malloc(sizeof(dog_t));
-    if (dog == NULL)
-        return (NULL);
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
 
-    name_copy = malloc(strlen(name) + 1);
-    if (name_copy == NULL)
-    {
-        free(dog);
-        return (NULL);
-    }
+	name_copy = malloc(strlen(name) + 1);
+	if (name_copy == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
+	strcpy(name_copy, name);
 
-    strcpy(name_copy, name);
+	owner_copy = malloc(strlen(owner) + 1);
+	if (owner_copy == NULL)
+	{
+		free(name_copy);
+		free(dog);
+		return (NULL);
+	}
+	strcpy(owner_copy, owner);
 
-    owner_copy = malloc(strlen(owner) + 1);
-    if (owner_copy == NULL)
-    {
-        free(name_copy);
-        free(dog);
-        return (NULL);
-    }
+	dog->name = name_copy;
+	dog->owner = owner_copy;
+	dog->age = age;
 
-    strcpy(owner_copy, owner);
-
-    dog->name = name_copy;
-    dog->owner = owner_copy;
-    dog->age = age;
-
-    return (dog);
+	return (dog);
 }
