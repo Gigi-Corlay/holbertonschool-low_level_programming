@@ -16,25 +16,22 @@ dog_t *new_dog(char *name, float age, char *owner)
     char *name_copy;
     char *owner_copy;
 
-    /* Si name ou owner est NULL, retourner NULL */
     if (name == NULL || owner == NULL)
         return (NULL);
 
-    /* Allouer la structure */
     dog = malloc(sizeof(dog_t));
     if (dog == NULL)
         return (NULL);
 
-    /* Allouer et copier name */
     name_copy = malloc(strlen(name) + 1);
     if (name_copy == NULL)
     {
         free(dog);
         return (NULL);
     }
+
     strcpy(name_copy, name);
 
-    /* Allouer et copier owner */
     owner_copy = malloc(strlen(owner) + 1);
     if (owner_copy == NULL)
     {
@@ -42,9 +39,9 @@ dog_t *new_dog(char *name, float age, char *owner)
         free(dog);
         return (NULL);
     }
+
     strcpy(owner_copy, owner);
 
-    /* Remplir la structure */
     dog->name = name_copy;
     dog->owner = owner_copy;
     dog->age = age;
