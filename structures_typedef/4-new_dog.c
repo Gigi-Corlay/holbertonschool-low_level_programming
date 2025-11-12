@@ -4,9 +4,9 @@
 
 /**
  * new_dog - Creates a new dog
- * @name: Name of the dog (can be NULL)
+ * @name: Name of the dog (cannot be NULL)
  * @age: Age of the dog
- * @owner: Owner of the dog (can be NULL)
+ * @owner: Owner of the dog (cannot be NULL)
  *
  * Return: Pointer to the new dog, or NULL if memory allocation fails
  */
@@ -16,10 +16,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *name_copy;
 	char *owner_copy;
 
-	if (name == NULL)
-		name = "";
-	if (owner == NULL)
-		owner = "";
+	if (name == NULL || owner == NULL)
+		return (NULL);
 
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
