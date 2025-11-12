@@ -7,29 +7,37 @@
  * @str: unsigned int
  * Return: char pointer
  */
+
 char *_strdup(char *str)
 {
-	int i;
-	int n = 0;
-	char * dest;
+	unsigned int length, counterTwo;
+	char *strCopy;
+
+	length = 0;
+	counterTwo = 0;
 
 	if (str == NULL)
+	{
 		return (0);
-
-	while (str[n] != '\0')
-	{
-		 n++;
 	}
 
-	dest = malloc(sizeof(char) * (n + 1));
+	while (str[length] != '\0')
+	{
+		length++;
+	}
 
-	if (dest == NULL)
+	strCopy = malloc(sizeof(char) * (length + 1));
+
+	if (strCopy == NULL)
+	{
 		return (NULL);
-
-	for (i = 0; i < n; i++)
-	{
-		dest[i] = str[i];
 	}
-	dest[i] = '\0';
-	return (dest);
+
+	while (counterTwo < length)
+	{
+		strCopy[counterTwo] = str[counterTwo];
+		counterTwo++;
+	}
+	strCopy[counterTwo] = '\0';
+	return (strCopy);
 }
