@@ -10,10 +10,8 @@ void free_dog(dog_t *d)
     if (d == NULL)
         return;
 
-    /* Libérer les chaînes */
     free(d->name);
     free(d->owner);
 
-    /* Libérer la structure elle-même */
     free(d);
 }
