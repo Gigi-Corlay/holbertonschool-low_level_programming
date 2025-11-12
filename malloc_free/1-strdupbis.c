@@ -10,26 +10,26 @@
 char *_strdup(char *str)
 {
 	char * dest;
-	unsigned int counterTwo;
-	unsigned int n = 0;
+
+	int i;
+	int n = 0;
 
 	if (str == 0)
 		return (NULL);
 
 	while (str[n] != '\0')
+	{
 		 n++;
+	}
 
 	dest = malloc(sizeof(*dest) * (n + 1));
 
 	if (dest == NULL)
 		return (NULL);
 
-	counterTwo = 0;
-	while (counterTwo < n)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		dest[counterTwo] = str [counterTwo];
-		counterTwo++;
+		dest[i] = str [i];
 	}
-	dest[counterTwo] = '\0';
 	return (dest);
 }
