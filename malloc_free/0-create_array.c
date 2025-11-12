@@ -9,7 +9,6 @@
  *
  * Return: un pointeur vers le tableau, ou NULL si échec ou size == 0
  */
-
  char *create_array(unsigned int size, char c)
  {
 	char * array;
@@ -18,7 +17,7 @@
 	if (size == 0)
 		return (NULL);
 
-	array = malloc(sizeof(*array) * size);
+	array = malloc(sizeof(char) * size);
 
 	if (array == NULL)
 		return (NULL);
