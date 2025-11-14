@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -9,32 +8,38 @@
 */
 char **strtow(char *str)
 {
-    unsigned int i = 0, j, w = 0, n = 0, start, end, length;
+    unsigned int i = 0, j, k, w = 0, n = 0, start, end, length;
     char **words;
 
-	if (str == NULL || str[0] == '\0')
-		return (NULL);
+    if (str == NULL || str[0] == '\0')
+        return (NULL);
 
-	while (str[i])
-	{
-		while (str[i] == ' ')
-			i++;
-		if (str[i])
-		{
-			n++;
-			while (str[i] != ' ' && str[i] != '\0')
-				i++;
-		}
-	}
+    /* Count words */
+    while (str[i])
+    {
+        while (str[i] == ' ')
+            i++;
+        if (str[i])
+        {
+            n++;
+            while (str[i] != ' ' && str[i] != '\0')
+                i++;
+        }
+    }
 
-	words = malloc(sizeof(char *) * (n + 1));
-	if (words == NULL)
-		return (NULL);
-	words[n] = NULL;
+    if (n == 0)
+        return (NULL);
 
-	i = 0;
+    /* Allocate array of pointers */
+    words = malloc(sizeof(char *) * (n + 1));
+    if (words == NULL)
+        return (NULL);
+    words[n] = NULL;
+
+    /* Copy words */
+    i = 0;
     w = 0;
-	while (str[i] && w < n)
+    while (str[i] && w < n)
     {
         while (str[i] == ' ')
             i++;
@@ -53,16 +58,15 @@ char **strtow(char *str)
                 free(words[w]);
             }
             free(words);
-            return NULL;
+            return (NULL);
         }
-		
-		for (i = start, j = 0; j < length; j++, i++)
-            words[w][j] = str[i];
+
+        for (j = 0, k = start; j < length; j++, k++)
+            words[w][j] = str[k];
         words[w][length] = '\0';
         w++;
         i = end;
     }
 
-	words[n] = NULL;
 	return (words);
 }
