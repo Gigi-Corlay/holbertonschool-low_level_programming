@@ -13,7 +13,7 @@
  * This prevents memory leaks in the program when freeing dog
  */
 
-/*void free_dog(dog_t *d)
+void free_dog(dog_t *d)
 {
 	if (d == NULL)
 	{
@@ -22,7 +22,7 @@
 	free(d->name);
 	free(d->owner);
 	free(d);
-}*/
+}
 /**
  * _strlen - Finds the length of a string.
  * @str: The string to be measured.
