@@ -18,7 +18,7 @@ int sum_them_all(const unsigned int n, ...)
 	if (n == 0)
 		return (0);
 
-	 /* Initialise la liste */
+	/* Initialise la liste */
 	va_start(args, n);
 	total = 0;
 	for (index = 0; index < n; index++)
