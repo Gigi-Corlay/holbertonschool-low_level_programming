@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stddef.h>
 #include "variadic_functions.h"
 
 /**
@@ -11,8 +11,8 @@ void print_char(va_list args)
 }
 
 /**
- * print_unsigned - recursive helper for print_int
- * @n: unsigned integer
+ * print_unsigned - prints an unsigned integer recursively
+ * @n: number to print
  */
 void print_unsigned(unsigned int n)
 {
@@ -33,11 +33,11 @@ void print_int(va_list args)
 	if (n < 0)
 	{
 		_putchar('-');
-		print_unsigned(-n);
+		print_unsigned((unsigned int)(-n));
 	}
 	else
 	{
-		print_unsigned(n);
+		print_unsigned((unsigned int)n);
 	}
 }
 
@@ -48,8 +48,8 @@ void print_int(va_list args)
 void print_float(va_list args)
 {
 	double n = va_arg(args, double);
-	int int_part, digit, i;
-	double frac_part;
+	int int_part, i, digit;
+	double frac;
 
 	if (n < 0)
 	{
@@ -58,17 +58,19 @@ void print_float(va_list args)
 	}
 
 	int_part = (int)n;
-	frac_part = n - int_part;
+	frac = n - int_part;
 
 	print_unsigned(int_part);
 	_putchar('.');
 
-	for (i = 0; i < 6; i++)
+	i = 0;
+	while (i < 6)
 	{
-		frac_part *= 10;
-		digit = (int)frac_part;
+		frac *= 10;
+		digit = (int)frac;
 		_putchar(digit + '0');
-		frac_part -= digit;
+		frac -= digit;
+		i++;
 	}
 }
 
@@ -81,7 +83,7 @@ void print_string(va_list args)
 	char *s = va_arg(args, char *);
 	int i = 0;
 
-	if (s == NULL)
+	if (!s)
 		s = "(nil)";
 
 	while (s[i])
@@ -93,7 +95,7 @@ void print_string(va_list args)
 
 /**
  * print_all - prints anything
- * @format: list of types of arguments
+ * @format: list of types
  */
 void print_all(const char * const format, ...)
 {
@@ -113,7 +115,6 @@ void print_all(const char * const format, ...)
 	while (format && format[i])
 	{
 		j = 0;
-
 		while (ops[j].type)
 		{
 			if (format[i] == ops[j].type)
