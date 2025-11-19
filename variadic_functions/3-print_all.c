@@ -2,86 +2,70 @@
 #include <stdio.h>
 #include "variadic_functions.h"
 
-/**
- * print_char - prints a char
- * @sep: separator string
- * @args: argument list
- */
-void print_char(char *sep, va_list args)
+/* Structure pour mapper un type à sa fonction */
+typedef struct printer
 {
-	printf("%s%c", sep, va_arg(args, int));
+    char type;
+    void (*f)(va_list args);
+} printer_t;
+
+/* Fonctions de print */
+void print_char(va_list args)
+{
+    printf("%c", va_arg(args, int));
 }
 
-/**
- * print_int - prints an integer
- * @sep: separator string
- * @args: argument list
- */
-void print_int(char *sep, va_list args)
+void print_int(va_list args)
 {
-	printf("%s%d", sep, va_arg(args, int));
+    printf("%d", va_arg(args, int));
 }
 
-/**
- * print_float - prints a float
- * @sep: separator string
- * @args: argument list
- */
-void print_float(char *sep, va_list args)
+void print_float(va_list args)
 {
-	printf("%s%f", sep, va_arg(args, double));
+    printf("%f", va_arg(args, double));
 }
 
-/**
- * print_string - prints a string
- * @sep: separator string
- * @args: argument list
- */
-void print_string(char *sep, va_list args)
+void print_string(va_list args)
 {
-	char *s = va_arg(args, char *);
-
-	if (s == NULL)
-	s = "(nil)";
-	printf("%s%s", sep, s);
+    char *s = va_arg(args, char *);
+    if (!s)
+        s = "(nil)";
+    printf("%s", s);
 }
 
-/**
- * print_all - prints anything
- * @format: list of argument types
- */
+/* La fonction print_all sans switch */
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	int i = 0;
-	char *sep = "";
+    va_list args;
+    printer_t ops[] = {
+        {'c', print_char},
+        {'i', print_int},
+        {'f', print_float},
+        {'s', print_string},
+        {'\0', NULL}
+    };
+    int i = 0, j;
+    char *sep = "";
 
-	va_start(args, format);
+    va_start(args, format);
 
-	while (format && format[i])
-	{
-	switch (format[i])
-	{
-		case 'c':
-		print_char(sep, args);
-		break;
-		case 'i':
-		print_int(sep, args);
-		break;
-		case 'f':
-		print_float(sep, args);
-		break;
-		case 's':
-		print_string(sep, args);
-		break;
-		default:
-		i++;
-		continue;
-	}
-	sep = ", ";
-	i++;
-	}
+    while (format && format[i])
+    {
+        j = 0;
+        while (ops[j].type)
+        {
+            if (format[i] == ops[j].type)
+            {
+                printf("%s", sep);
+                ops[j].f(args);
+                sep = ", ";
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
 
-	va_end(args);
-	printf("\n");
+    va_end(args);
+    printf("\n");
 }
