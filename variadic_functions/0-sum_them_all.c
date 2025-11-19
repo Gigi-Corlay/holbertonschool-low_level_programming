@@ -1,29 +1,87 @@
 #include <stdarg.h>
+#include <stdio.h>
 #include "variadic_functions.h"
 
 /**
- * sum_them_all - Returns the sum of all its parameters.
- * @n: The number of parameters passed to the function.
- *
- * Return: The total sum of all parameters, or 0 if n is 0.
+ * print_char - prints a char
+ * @sep: separator string
+ * @args: argument list
  */
-int sum_them_all(const unsigned int n, ...)
+void print_char(char *sep, va_list args)
 {
-	unsigned int index;
-	int total, value;
+	printf("%s%c", sep, va_arg(args, int));
+}
+
+/**
+ * print_int - prints an integer
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_int(char *sep, va_list args)
+{
+	printf("%s%d", sep, va_arg(args, int));
+}
+
+/**
+ * print_float - prints a float
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_float(char *sep, va_list args)
+{
+	printf("%s%f", sep, va_arg(args, double));
+}
+
+/**
+ * print_string - prints a string
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_string(char *sep, va_list args)
+{
+	char *s = va_arg(args, char *);
+
+	if (s == NULL)
+	s = "(nil)";
+	printf("%s%s", sep, s);
+}
+
+/**
+ * print_all - prints anything
+ * @format: list of argument types
+ */
+void print_all(const char * const format, ...)
+{
 	va_list args;
+	int i = 0;
+	char *sep = "";
 
-	if (n == 0)
-		return (0);
+	va_start(args, format);
 
-	va_start(args, n);
-	total = 0;
-	for (index = 0; index < n; index++)
+	while (format && format[i])
 	{
-		value = va_arg(args, int);
-		total += value;
+	switch (format[i])
+	{
+		case 'c':
+		print_char(sep, args);
+		break;
+		case 'i':
+		print_int(sep, args);
+		break;
+		case 'f':
+		print_float(sep, args);
+		break;
+		case 's':
+		print_string(sep, args);
+		break;
+		default:
+		i++;
+		continue;
 	}
-	va_end(args);
+	sep = ", ";
+	i++;
+	}
 
-	return (total);
+	va_end(args);
+	printf("\n");
 }

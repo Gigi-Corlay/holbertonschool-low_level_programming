@@ -1,134 +1,87 @@
 #include <stdarg.h>
-#include <stddef.h>
+#include <stdio.h>
 #include "variadic_functions.h"
 
 /**
-* struct printer - maps a format specifier to its print function
-* @type: the format specifier (c, i, f, s)
-* @f: function pointer to the print function
-*/
-typedef struct printer
+ * print_char - prints a char
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_char(char *sep, va_list args)
 {
-	char type;
-	void (*f)(va_list args);
-} printer_t;
-
-/* Helper to print unsigned int recursively */
-void print_unsigned(unsigned int n)
-{
-	if (n / 10)
-		print_unsigned(n / 10);
-
-	_putchar((n % 10) + '0');
+	printf("%s%c", sep, va_arg(args, int));
 }
 
-/* Print char */
-void print_char(va_list args)
+/**
+ * print_int - prints an integer
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_int(char *sep, va_list args)
 {
-	_putchar(va_arg(args, int));
+	printf("%s%d", sep, va_arg(args, int));
 }
 
-/* Print int */
-void print_int(va_list args)
+/**
+ * print_float - prints a float
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_float(char *sep, va_list args)
 {
-	int n = va_arg(args, int);
-
-	if (n < 0)
-	{
-		_putchar('-');
-		print_unsigned((unsigned int)(-n));
-
-		return;
-	}
-	print_unsigned((unsigned int)n);
-
+	printf("%s%f", sep, va_arg(args, double));
 }
 
-/* Print float with 6 decimal places */
-void print_float(va_list args)
-{
-	double n = va_arg(args, double);
-	int int_part, i, digit;
-	double frac;
-
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
-
-	int_part = (int)n;
-	frac = n - int_part;
-
-	print_unsigned(int_part);
-	_putchar('.');
-
-	i = 0;
-	while (i < 6)
-	{
-		frac *= 10;
-		digit = (int)frac;
-		_putchar(digit + '0');
-		frac -= digit;
-		i++;
-	}
-}
-
-/* Print string */
-void print_string(va_list args)
+/**
+ * print_string - prints a string
+ * @sep: separator string
+ * @args: argument list
+ */
+void print_string(char *sep, va_list args)
 {
 	char *s = va_arg(args, char *);
 
-	int i = 0;
-
-	if (!s)
-		s = "(nil)";
-
-	while (s[i])
-	{
-		_putchar(s[i]);
-		i++;
-	}
+	if (s == NULL)
+	s = "(nil)";
+	printf("%s%s", sep, s);
 }
 
-/* Main print_all function */
+/**
+ * print_all - prints anything
+ * @format: list of argument types
+ */
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	printer_t ops[] = {
-		{'c', print_char},
-		{'i', print_int},
-		{'f', print_float},
-		{'s', print_string},
-		{'\0', NULL}
-	};
-	int i = 0, j;
-
+	int i = 0;
 	char *sep = "";
 
 	va_start(args, format);
 
 	while (format && format[i])
 	{
-		j = 0;
-		while (ops[j].type)
-		{
-			if (format[i] == ops[j].type)
-			{
-				if (sep[0])
-				{
-					_putchar(sep[0]);
-					_putchar(sep[1]);
-				}
-				ops[j].f(args);
-				sep = ", ";
-				break;
-			}
-			j++;
-		}
+	switch (format[i])
+	{
+		case 'c':
+		print_char(sep, args);
+		break;
+		case 'i':
+		print_int(sep, args);
+		break;
+		case 'f':
+		print_float(sep, args);
+		break;
+		case 's':
+		print_string(sep, args);
+		break;
+		default:
 		i++;
+		continue;
+	}
+	sep = ", ";
+	i++;
 	}
 
 	va_end(args);
-	_putchar('\n');
+	printf("\n");
 }
