@@ -2,11 +2,10 @@
 #define VARIADIC_FUNCTIONS_H
 
 #include <stdarg.h>
-#include <stddef.h>
 
 /**
  * struct printer - maps a format specifier to its print function
- * @type: the format specifier
+ * @type: the format specifier (c, i, f, s)
  * @f: function pointer to the print function
  */
 typedef struct printer

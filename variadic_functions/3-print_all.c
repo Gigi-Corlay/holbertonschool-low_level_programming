@@ -1,19 +1,8 @@
+#include <stdarg.h>
 #include <stddef.h>
 #include "variadic_functions.h"
 
-/**
- * print_char - prints a char
- * @args: argument list
- */
-void print_char(va_list args)
-{
-	_putchar(va_arg(args, int));
-}
-
-/**
- * print_unsigned - prints an unsigned integer recursively
- * @n: number to print
- */
+/* Helper to print unsigned int recursively */
 void print_unsigned(unsigned int n)
 {
 	if (n / 10)
@@ -22,10 +11,13 @@ void print_unsigned(unsigned int n)
 	_putchar((n % 10) + '0');
 }
 
-/**
- * print_int - prints an integer
- * @args: argument list
- */
+/* Print char */
+void print_char(va_list args)
+{
+	_putchar(va_arg(args, int));
+}
+
+/* Print int */
 void print_int(va_list args)
 {
 	int n = va_arg(args, int);
@@ -34,17 +26,12 @@ void print_int(va_list args)
 	{
 		_putchar('-');
 		print_unsigned((unsigned int)(-n));
+		return;
 	}
-	else
-	{
-		print_unsigned((unsigned int)n);
-	}
+	print_unsigned((unsigned int)n);
 }
 
-/**
- * print_float - prints a float
- * @args: argument list
- */
+/* Print float with 6 decimal places */
 void print_float(va_list args)
 {
 	double n = va_arg(args, double);
@@ -74,10 +61,7 @@ void print_float(va_list args)
 	}
 }
 
-/**
- * print_string - prints a string
- * @args: argument list
- */
+/* Print string */
 void print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
@@ -93,12 +77,10 @@ void print_string(va_list args)
 	}
 }
 
-/**
- * print_all - prints anything
- * @format: list of types
- */
+/* Main print_all function */
 void print_all(const char * const format, ...)
 {
+	va_list args;
 	printer_t ops[] = {
 		{'c', print_char},
 		{'i', print_int},
@@ -106,9 +88,8 @@ void print_all(const char * const format, ...)
 		{'s', print_string},
 		{'\0', NULL}
 	};
-
-	va_list args;
-	int i = 0, j, printed = 0;
+	int i = 0, j;
+	char *sep = "";
 
 	va_start(args, format);
 
@@ -119,14 +100,13 @@ void print_all(const char * const format, ...)
 		{
 			if (format[i] == ops[j].type)
 			{
-				if (printed)
+				while (*sep)
 				{
-					_putchar(',');
-					_putchar(' ');
+					_putchar(*sep);
+					sep++;
 				}
-
 				ops[j].f(args);
-				printed = 1;
+				sep = ", ";
 				break;
 			}
 			j++;
