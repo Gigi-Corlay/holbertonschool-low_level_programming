@@ -1,17 +1,17 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef VARIADIC_FUNCTIONS_H
+#define VARIADIC_FUNCTIONS_H
 
 #include <stdarg.h>
 
 /**
-* struct printer - maps a format specifier to a print function
-* @type: the format specifier (c, i, f, s)
-* @f: pointer to the print function
-*/
+ * struct printer - maps a format specifier to its print function
+ * @type: the format specifier
+ * @f: function pointer to the print function
+ */
 typedef struct printer
 {
-    char type;
-    void (*f)(va_list args);
+	char type;
+	void (*f)(va_list args);
 } printer_t;
 
 int _putchar(char c);
