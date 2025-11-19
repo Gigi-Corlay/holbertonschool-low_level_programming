@@ -2,6 +2,17 @@
 #include <stddef.h>
 #include "variadic_functions.h"
 
+/**
+* struct printer - maps a format specifier to its print function
+* @type: the format specifier (c, i, f, s)
+* @f: function pointer to the print function
+*/
+typedef struct printer
+{
+	char type;
+	void (*f)(va_list args);
+} printer_t;
+
 /* Helper to print unsigned int recursively */
 void print_unsigned(unsigned int n)
 {
@@ -26,9 +37,11 @@ void print_int(va_list args)
 	{
 		_putchar('-');
 		print_unsigned((unsigned int)(-n));
+
 		return;
 	}
 	print_unsigned((unsigned int)n);
+
 }
 
 /* Print float with 6 decimal places */
@@ -65,6 +78,7 @@ void print_float(va_list args)
 void print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
+
 	int i = 0;
 
 	if (!s)
@@ -89,6 +103,7 @@ void print_all(const char * const format, ...)
 		{'\0', NULL}
 	};
 	int i = 0, j;
+
 	char *sep = "";
 
 	va_start(args, format);
@@ -100,10 +115,10 @@ void print_all(const char * const format, ...)
 		{
 			if (format[i] == ops[j].type)
 			{
-				while (*sep)
+				if (sep[0])
 				{
-					_putchar(*sep);
-					sep++;
+					_putchar(sep[0]);
+					_putchar(sep[1]);
 				}
 				ops[j].f(args);
 				sep = ", ";
