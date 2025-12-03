@@ -4,13 +4,14 @@
 #include "lists.h"
 
 /**
- * free_dlistint - Frees a doubly linked list
- * @head: Pointer to the head of the list
- *
- * Return: Nothing
- */
- void free_dlistint(dlistint_t *head)
- {
+* free_dlistint - Frees a doubly linked list
+* @head: Pointer to the head of the list
+*
+* Return: Nothing
+*/
+
+void free_dlistint(dlistint_t *head)
+{
 	dlistint_t *tmp;
 
 	while (head != NULL)
@@ -19,4 +20,4 @@
 		free(head);
 		head = tmp;
 	}
- }
+}
