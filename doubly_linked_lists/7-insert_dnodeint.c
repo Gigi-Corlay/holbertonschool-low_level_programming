@@ -4,27 +4,27 @@
 #include "lists.h"
 
 /**
- * insert_dnodeint_at_index - Inserts a new node at a given index
- * @h: Double pointer to the head of the doubly linked list
- * @idx: Position where the new node should be inserted (starting at 0)
- * @n: Value to store in the new node
- *
- * Description:
- * This function inserts a new node at the specified index in a doubly
- * linked list. If idx is 0, the node is added at the beginning. If the
- * index corresponds to the end of the list, the node is added at the end.
- * If the index is out of range, no node is added and NULL is returned.
- *
- * Return: The address of the newly inserted node, or NULL on failure.
- */
+* insert_dnodeint_at_index - Inserts a new node at a given index
+* @h: Double pointer to the head of the doubly linked list
+* @idx: Position where the new node should be inserted (starting at 0)
+* @n: Value to store in the new node
+*
+* Description:
+* This function inserts a new node at the specified index in a doubly
+* linked list. If idx is 0, the node is added at the beginning. If the
+* index corresponds to the end of the list, the node is added at the end.
+* If the index is out of range, no node is added and NULL is returned.
+*
+* Return: The address of the newly inserted node, or NULL on failure.
+*/
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *current;
-    dlistint_t *new_node;
-    unsigned int i;
-	
+	dlistint_t *new_node;
+	unsigned int i;
+
 	if (h == NULL)
-        return (NULL);
+		return (NULL);
 
 	if (idx == 0)
 	{
@@ -38,14 +38,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 
 	if (current == NULL)
-        return (NULL);
+		return (NULL);
 
-    if (current->next == NULL)
-        return (add_dnodeint_end(h, n));
+	if (current->next == NULL)
+		return (add_dnodeint_end(h, n));
 
-    new_node = malloc(sizeof(dlistint_t));
-    if (new_node == NULL)
-        return (NULL);
+	new_node = malloc(sizeof(dlistint_t));
+	if (new_node == NULL)
+		return (NULL);
 
 	new_node->n = n;
 	new_node->next = current->next;
