@@ -44,7 +44,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hash
 ```
 ## 🧪 Exemple d’utilisation
 **Création et insertion**
-```
+```c
 #include "hash_tables.h"
 
 int main(void)
