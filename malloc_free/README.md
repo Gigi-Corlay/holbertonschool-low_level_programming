@@ -1,11 +1,11 @@
-📘 README — Comprendre malloc en C
-🧠 Qu’est-ce que malloc ?
+# 📘 README — Comprendre malloc en C
+## 🧠 Qu’est-ce que malloc ?
 
 malloc (Memory Allocation) est une fonction de la bibliothèque standard C (stdlib.h) qui permet d’allouer dynamiquement de la mémoire pendant l’exécution d’un programme.
 
 Elle renvoie un pointeur vers la zone mémoire allouée, ou NULL si l’allocation échoue.
 
-🧩 Prototype
+## 🧩 Prototype
 void *malloc(size_t size);
 
 
@@ -13,7 +13,7 @@ size → le nombre d’octets à allouer.
 
 Le retour est de type void *, donc tu dois le convertir (caster) vers le type de pointeur souhaité.
 
-⚙️ Exemple simple
+## ⚙️ Exemple simple
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,27 +45,24 @@ int main(void)
     return (0);
 }
 
-🧾 Explication du code
+## 🧾 Explication du code
 
-malloc(sizeof(int) * 5)
+#### malloc(sizeof(int) * 5)
 → alloue de la mémoire pour 5 entiers (soit environ 20 octets sur une machine 64 bits).
 
-Vérification du pointeur
+#### Vérification du pointeur
 → Si malloc échoue, elle renvoie NULL. Toujours vérifier avant d’utiliser la mémoire.
 
-Utilisation du tableau
+#### Utilisation du tableau
 → On peut utiliser tab comme un tableau normal.
 
-free(tab)
+#### free(tab)
 → Libère la mémoire allouée.
 Ne pas libérer provoque une fuite mémoire (memory leak).
 
-🧰 Bonnes pratiques
+## 🧰 Bonnes pratiques
 
-Toujours vérifier le retour de malloc.
-
-Toujours libérer la mémoire avec free().
-
-Éviter d’utiliser la mémoire après free() (cela provoque un “use after free”).
-
-Utiliser valgrind pour détecter les erreurs mémoire.
+- Toujours vérifier le retour de malloc.
+- Toujours libérer la mémoire avec free().
+- Éviter d’utiliser la mémoire après free() (cela provoque un “use after free”).
+- Utiliser valgrind pour détecter les erreurs mémoire.
